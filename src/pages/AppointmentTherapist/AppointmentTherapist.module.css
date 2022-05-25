@@ -1,0 +1,154 @@
+.Wrapper {
+    width: 80%;
+  margin-left: 20%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-family: 'Roboto', sans-serif;
+
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    position: relative;
+}
+
+.Appointment {
+    width: 60%;
+    height: auto;
+    border: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    background-color: rgba(43, 43, 43, 0.9);
+    color: #fff;
+}
+
+.SpinnerText {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation-name: pulse;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5rem;
+}
+
+.Header i {
+    font-size: 30px;
+    padding: .7rem .7rem 0rem 0rem;
+}
+
+.Header i:hover {
+    transform: scale(1.05);
+    filter: brightness(70%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.DropDownWrapper {
+    width: 90%;
+    margin: .5rem auto;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Scheduler {
+    width: 90%;
+    margin: .5rem auto;
+    padding: .2rem;
+    background: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Scheduler label {
+    color: #000;
+    padding: 0rem .5rem;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0rem auto;
+    padding: .2rem;
+}
+
+.Details input {
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+}
+
+.Submit {
+    width: 90%;
+    margin: 0rem auto;
+    padding: 2rem .2rem;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.Submit button {
+    width: 10rem;
+    height: 2.2rem;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    border-radius: 4px;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 900px) {
+    .Wrapper {
+        padding-top: 5rem;
+        width: 100%;
+        margin: 0rem;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .Wrapper {
+        width: 100%;
+        padding-bottom: 26rem;
+        padding-top: 5rem;
+    }
+
+    .Appointment {
+        width: 100%;
+    }
+
+    .Submit {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

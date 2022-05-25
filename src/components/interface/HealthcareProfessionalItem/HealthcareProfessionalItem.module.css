@@ -1,0 +1,36 @@
+.Row {
+    color: #000;
+}
+
+.Row td {
+    /* border: 2px solid #000; */
+    text-align: justify;
+    padding: .2rem;
+    font-size: 1vw;
+    font-size:calc(12px + .3vw);
+}
+
+.Row span {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center; 
+    vertical-align: middle;
+}
+
+.Row span:hover {
+    text-shadow: 0px 5px 10px rgba(165, 177, 2, 0.4);
+    color: rgb(165, 177, 2);
+    cursor: pointer;
+    transition: .2s;
+    
+}
+
+.Row label {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center; 
+    vertical-align: middle;
+}
+

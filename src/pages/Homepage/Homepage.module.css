@@ -1,0 +1,408 @@
+.Wrapper {
+  width: 80%;
+  margin-left: 20%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+.Wellcome {
+  margin-top: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: #6ab05e;
+  width: 100%;
+}
+
+.Wellcome hr {
+  width: 80%;
+  height: .18rem;
+  margin: auto;
+  color: rgba(0, 0, 0, 1);
+}
+
+.Wellcome h1 {
+  font-size: 72px;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.Carousel {
+  height: auto;
+  width: 50%;
+  margin-top: 2rem;
+  background-color: aliceblue;
+  margin-bottom: 5rem;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+}
+
+.ClinicInfo {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ClinicInfo h2 {
+  width: 60%;
+  margin: auto;
+  text-align: justify;
+  font-family: 'Roboto', sans-serif;
+}
+
+.ClinicInfo b {
+  text-decoration: underline;
+  transition: .5s;
+}
+
+.ClinicInfo b:hover {
+  cursor: pointer;
+  color: #6ab05e;
+  transition: .5s;
+  font-size: 40px;
+}
+
+.ClinicInfo b:active {
+  cursor: pointer;
+  font-size: xx-large;
+  transition: .5s;
+}
+
+.ClinicInfo button {
+  width: 16rem;
+  height: 3.2rem;
+  outline: none;
+  border: 2px solid #95ca7d;
+  border-radius: 25px;
+  background-color: #6ab05e;
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+  align-self: center;
+  margin-top: 2rem;
+  font-size: 1vw;
+  color: white;
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
+  transition: .2s;
+}
+
+.ClinicInfo button:hover {
+  background-color: #95ca7d;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.ClinicInfo button:active {
+  background-color: #6ab05e;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.Cards {
+  width: 100%;
+  height: auto;
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.ServiceCard {
+  width: 20rem;
+  height: 60rem;
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.42);
+  transition: .5s;
+  display: flex;
+  flex-direction: column;
+}
+
+.ServiceCard:hover {
+  transform: scale(1.03);
+  transition: .5s;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 15px 5px rgba(106, 176, 94.42);
+  box-shadow: 0px 5px 15px 5px rgba(106, 176, 94.42);
+}
+
+.ServiceCard:active {
+  transform: scale(1);
+  transition: .5s;
+}
+
+.ServiceCard:hover button {
+  transform: scale(1.12);
+  transition: .5s;
+}
+
+.CardImageWrapper {
+  height: 65%;
+}
+
+.CardImage {
+  width: 100%;
+  height: 100%;
+}
+
+.CardImage img {
+  height: 100%;
+  width: 100%;
+}
+
+.CardInfo {
+  height: 35%;
+  width: 100%;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  border-top: 1px solid rgb(216, 216, 216);
+}
+
+.CardInfo p {
+  height: 70%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1vw;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+}
+
+.CardInfo h5 {
+  height: 70%;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.4vw;
+  text-align: center;
+}
+
+.CardInfo button {
+  width: 10rem;
+  height: 2rem;
+  outline: none;
+  border: none;
+  border-radius: 50rem;
+  background-color: white;
+  font-size: 24px;
+  color: #6ab05e;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto', sans-serif;
+  transition: .5s;
+}
+
+.ContactWrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.Contact {
+  background-color: #fff;
+  border: 2px solid rgb(180, 180, 180);
+  border-radius: 20px;
+  padding: 1rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(106, 176, 94.42, 0.8);
+  box-shadow: 0px 5px 10px 0px rgba(106, 176, 94.42, 0.8);
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  color: #000;
+  text-shadow: 0px 5px 5px rgba(255, 255, 255, 0.2);
+  height: auto;
+}
+
+.Contact h2 {
+  text-align: center;
+}
+
+.Contact button {
+  width: 40%;
+  margin: auto;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  margin-top: 1.2rem !important;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Contact button:hover {
+  filter: brightness(80%);
+  transition: .5s;
+  transform: scale(1.05);
+}
+
+.Contact button:active {
+  transform: scale(.9);
+  transition: .2s;
+}
+
+.ContactOption {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  .Cards {
+    width: 100%;
+    height: auto;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .ServiceCard {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+
+  .ServiceCard button {
+    width: 90%;
+    font-size: 3vw;
+  }
+
+  .Carousel {
+    width: 90%;
+  }
+
+  .Carousel h3 {
+    font-size: 7vw !important;
+  }
+
+  .Contact {
+    margin-bottom: 10rem;
+    width: 40%;
+    font-size: 3.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1300px) {
+  .Wrapper {
+    width: 70%;
+    margin-left: 30%;
+  }
+
+  .Cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ServiceCard {
+    margin: 2rem 0rem;
+  }
+
+  .CardInfo p {
+    font-size: 2vw;
+  }
+
+  .Contact {
+    width: 60%;
+  }
+
+  .ContactOption {
+    display: flex;
+    flex-direction: column;
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .Wrapper {
+    padding-top: auto;
+    width: 100%;
+    margin-left: 0rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .Wrapper {
+    padding-bottom: 50%;
+  }
+
+  .CardInfo p {
+    font-size: 3vw;
+  }
+
+  .ClinicInfo button {
+    font-size: 3vw;
+  }
+
+  .ServiceCard button {
+    font-size: 3vw;
+  }
+
+  .ServiceCard {
+    width: 90%;
+  }
+
+  .ServiceCard h5 {
+    font-size: 5vw;
+  }
+
+  .Contact {
+    width: 80%;
+  }
+
+  .Contact label {
+    font-size: 6vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .CardInfo p {
+    height: 70%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1vw;
+    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    text-align: justify;
+  }
+}
+
+@media (min-width: 2000px) {
+
+  .ServiceCard {
+    width: 30%;
+  }
+
+  .CardImageWrapper {
+
+  }
+
+  .CardInfo {
+
+  }
+
+}

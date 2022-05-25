@@ -1,0 +1,78 @@
+.e-ddl.e-input-group.e-control-wrapper .e-input {
+    font-size: 18px;
+    color: #000000 !important;
+    background: #ffffff !important;
+    border-radius: 4px 0px 0px 4px;
+    height: 2.2rem;
+  }
+  
+  .e-ddl.e-input-group .e-input-group-icon, .e-ddl.e-input-group.e-control-wrapper .e-input-group-icon:hover {
+    background-color: #fff !important;
+    font-size: 13px;
+    margin: 0rem !important;
+    border-radius: 0px 4px 0px 0px !important;
+  }
+  
+  
+  .e-dropdownbase .e-list-item.e-item-focus, .e-dropdownbase .e-list-item.e-active, .e-dropdownbase .e-list-item.e-active.e-hover, .e-dropdownbase .e-list-item.e-hover {
+    color: #ffffff;
+  }
+  
+  .e-input-group.e-control-wrapper.e-float-input .e-float-text::after {
+    content: "*";
+    color: rgb(0, 0, 0);
+  }
+  
+  .e-ddl.e-input-group input.e-input::placeholder {
+    color: rgb(0, 0, 0);
+    padding: 0rem .3rem;
+  }
+  
+  .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after {
+    background: #6AB05E !important;
+  }
+  
+  .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before {
+    background: #6AB05E !important;
+  }
+  
+  .e-input:not(:valid), 
+  .e-input:valid, 
+  .e-float-input.e-control-wrapper input:not(:valid), 
+  .e-float-input.e-control-wrapper input:valid, 
+  .e-float-input input:not(:valid), .e-float-input input:valid, 
+  .e-input-group input:not(:valid), .e-input-group input:valid, 
+  .e-input-group.e-control-wrapper input:not(:valid), 
+  .e-input-group.e-control-wrapper input:valid, 
+  .e-float-input.e-control-wrapper textarea:not(:valid), 
+  .e-float-input.e-control-wrapper textarea:valid, 
+  .e-float-input textarea:not(:valid), 
+  .e-float-input textarea:valid, 
+  .e-input-group.e-control-wrapper textarea:not(:valid), 
+  .e-input-group.e-control-wrapper textarea:valid, 
+  .e-input-group textarea:not(:valid), 
+  .e-input-group textarea:valid {
+    font-size: 30px;
+    height: 2.2rem;
+    width: 100%;
+    background-color: #fff !important;
+    padding: .3rem;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+  
+  .e-input:focus:not(.e-success):not(.e-warning):not(.e-error) {
+    border-color: #6AB05E !important;
+  }
+  
+  .e-btn:focus {
+    color: #fff !important;
+  }
+  
+  .e-subject.e-field.e-input {
+    display: none !important;
+  }
+  
+  .e-cell-popup .e-event-details.e-text-ellipsis.e-control.e-btn.e-lib.e-flat{
+    display: none;
+  }

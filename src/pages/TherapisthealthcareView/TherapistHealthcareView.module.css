@@ -1,0 +1,409 @@
+.Wrapper {
+    width: 80%;
+    margin-left: 20%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-family: 'Roboto', sans-serif;
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    position: relative;
+}
+
+.SpinnerText {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation-name: pulse;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.ViewHealthcareTherapist {
+    width: 60%;
+    height: auto;
+    border: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    background-color: rgba(43, 43, 43, 0.9);
+    color: #fff;
+    padding: .4rem;
+}
+
+.Header {
+    padding: .5rem;
+    border-bottom: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Header i {
+    font-size: 30px;
+    padding: .7rem 0rem 0rem 0rem;
+}
+
+.Header i:hover {
+    transform: scale(1.05);
+    filter: brightness(70%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.Content {}
+
+.CurrentFiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.RequirementControl {}
+
+.Documents {
+    margin: 1rem .5rem;
+    max-width: 60%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+
+}
+
+.Documents h5 {
+    padding: 0rem .2rem;
+    border-bottom: 2px solid #000;
+}
+
+.Documents label {
+    margin: .2rem;
+}
+
+.Requirements {
+    margin: 1rem .5rem;
+    max-width: 100%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+
+}
+
+.Action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: .2rem 0rem .5rem .5rem;
+}
+
+.ActionCombine {
+    display: flex;
+    flex-direction: column;
+}
+
+.Changes {
+    display: flex;
+    flex-direction: row;
+}
+
+.Changes label {
+    margin: 0rem .4rem;
+}
+
+.ConfirmComplete {
+    color: rgb(46, 122, 46);
+}
+
+.ConfirmComplete:hover {
+    cursor: pointer;
+    transform: scale(1);
+    font-size: 1.6vw;
+    transition: .2s;
+}
+
+.DeclineComplete {
+    color: rgb(150, 24, 24);
+}
+
+.DeclineComplete:hover {
+    cursor: pointer;
+    font-size: 1.6vw;
+    transition: .2s;
+}
+
+.ActionConfirm {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.ActionLightOn {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #e9d370;
+    border: 2px solid #e0b12f;
+    -webkit-box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+    box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+    margin: .3rem;
+}
+
+
+.ActionLightOff {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 82%);
+    border: 2px solid #757575;
+    -webkit-box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+    box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+    margin: .3rem;
+}
+
+.RequiredDocs {
+    min-width: 40%;
+    padding: .4rem;
+    margin: 1rem .2rem;
+    max-width: 50%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.RequiredDocs button:disabled {
+    background-color: rgb(46, 122, 46);
+    color: rgb(207, 207, 207);
+}
+
+.RequiredDocs button {
+    width: 100%;
+    font-size: 1vw;
+}
+
+.AddRequirement {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+}
+
+.AddRequirement:hover * {
+    cursor: pointer;
+    color: rgb(51, 51, 51);
+}
+
+.Requirement {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Requirement span {
+    padding-top: .5rem;
+}
+
+.ItemToDownload {
+    border: 1px solid #000;
+    margin: .2rem;
+    border-radius: 4px;
+    padding: .2rem;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Upload {
+    padding: .2rem;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+}
+
+.Upload button {
+    min-width: 50%;
+    font-size: 1.2vw;
+    margin: 1rem 0rem;
+}
+
+.Upload button:disabled {
+    background-color: rgb(46, 122, 46);
+    color: rgb(207, 207, 207);
+}
+
+.UploadFiles {
+    padding: .2rem 0rem;
+
+}
+
+.FileItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: .4rem 0rem 0rem 0rem;
+}
+
+.FileItemNameAndDelete {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.FileItemNameAndDelete p {
+    margin: 0rem;
+}
+
+.FileItemNameAndDelete i {
+    color: rgb(150, 24, 24);
+    font-size: 1.6vw;
+    padding-bottom: .2rem;
+}
+
+.FileItemNameAndDelete i:hover {
+    filter: brightness(200%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.FileItemInformation {
+    width: 100%;
+}
+
+.FileItemInformation input {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+}
+
+.Submit {
+    padding: .2rem 0rem;
+    margin: 1rem 0rem 0rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Submit button {
+    width: 10rem;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .Wrapper {
+        width: 70%;
+        margin-left: 30%;
+    }
+
+    .ViewHealthcareTherapist {
+        width: 60%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .RequiredDocs button {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Wrapper {
+        width: 80%;
+        margin: auto;
+
+    }
+}
+
+@media (max-width: 650px) {
+    .Wrapper {
+        padding-top: 2rem;
+        width: 100%;
+        margin: 0rem;
+        padding-bottom: 24rem;
+    }
+
+    .Header i {
+        padding: 0rem;
+    }
+
+    .ViewHealthcareTherapist {
+        width: 100%;
+    }
+
+    .CurrentFiles {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .Documents {
+        width: 100%;
+        max-width: none;
+    }
+
+    .Action {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Action label {
+        text-align: center;
+    }
+
+    .RequiredDocs {
+        width: 100%;
+        max-width: none;
+    }
+
+    .RequiredDocs button {
+        font-size: 4vw;
+    }
+
+    .Upload button {
+        font-size: 4vw;
+        width: 100%;
+    }
+    
+    .Submit {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,85 @@
+.Wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0rem 2rem;
+    background-color: rgba(43, 43, 43, 0.9);
+}
+
+.HealthcareContent {
+    
+}
+
+.Pagination {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 2.8rem;
+    background-color: rgba(255, 255, 255);
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Pagination a {
+    text-decoration: none;
+    color: #000;
+    margin: 0;
+    padding: 0rem;
+    list-style-type: none;
+    background-color: #e7e7e7;
+    padding: .2rem;
+    border-radius: 6px;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Pagination a:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: .2s;
+    background-color: rgb(243, 243, 243);
+}
+
+.Pagination ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: .2rem;
+}
+
+.Pagination li {
+    margin: .2rem;
+}
+
+.PreviousPage {
+    margin: 1rem;
+}
+
+.NextPage {
+    margin: 1rem;
+}
+
+.List {}
+
+.CurrentPage {}
+
+.OtherPages {}
+
+.Ellipsis {}
+
+
+@media (max-width: 600px) {
+    .Wrapper {
+        min-height: 30rem;
+    }
+}

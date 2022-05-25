@@ -1,0 +1,19 @@
+#Accept {
+    color: rgb(46, 122, 46);
+}
+
+#Accept:hover {
+    transition: .2s;
+    filter: brightness(150%);
+    cursor: pointer;
+}
+
+#Decline {
+    color: rgb(150, 24, 24);
+}
+
+#Decline:hover {
+    transition: .2s;
+    filter: brightness(150%);
+    cursor: pointer;
+}

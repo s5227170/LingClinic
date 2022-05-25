@@ -1,0 +1,302 @@
+.Wrapper {
+    width: 80%;
+  margin-left: 20%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-family: 'Roboto', sans-serif;
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    position: relative;
+}
+
+.CreateHealthcare {
+    width: 60%;
+    height: auto;
+    border: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    background-color: rgba(43, 43, 43, 0.9);
+    color: #fff;
+    padding: .4rem;
+}
+
+.SpinnerText {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation-name: pulse;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5rem;
+    border-bottom: 2px solid rgb(131, 131, 131);
+}
+
+.Header i {
+    font-size: 30px;
+    padding: .7rem .7rem 0rem 0rem;
+}
+
+.Header i:hover {
+    transform: scale(1.05);
+    filter: brightness(70%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.Content {
+
+}
+
+.AppointmentInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Info  {
+    padding: .4rem;
+    margin: 1rem .2rem;
+    max-width: 50%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.RequiredDocs{
+    min-width: 40%;
+    padding: .4rem;
+    margin: 1rem .2rem;
+    max-width: 50%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.AddRequirement {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+}
+
+.AddRequirement:hover *{
+    cursor: pointer;
+    color: rgb(51, 51, 51);
+}
+
+.Requirement {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Requirement span {
+    padding-top: .5rem;
+}
+
+.Documents {
+    padding: .4rem;
+    margin: 1rem .2rem;
+    max-width: 50%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Details input {
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0rem auto;
+    padding: .4rem;
+}
+
+.DropDownWrapper {
+    width: 100%;
+    margin: auto;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Files {
+    min-height: 6rem;
+    width: 100%;
+    margin: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.FileItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem 0rem -.5rem 0rem;
+}
+
+.FileItemNameAndDelete {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.FileItemNameAndDelete i {
+    color: rgb(150, 24, 24);
+    font-size: 1.6vw;
+}
+
+.FileItemNameAndDelete i:hover {
+    filter: brightness(200%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.FileItemInformation{
+    width: 100%;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+}
+
+.FileItemInformation input{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Submit {
+    width: 100%;
+    margin: 0rem auto;
+    padding: 2rem .2rem 0rem 0rem;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.Submit button {
+    width: 12rem;
+    height: 2.2rem;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    border-radius: 4px;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 650px) {
+    .Wrapper {
+        margin: auto;
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .Wrapper {
+        padding-top: 2rem;
+        width: 100%;
+        margin: 0rem;
+        padding-bottom: 30rem;
+    }
+
+    .CreateHealthcare {
+        width: 100%;
+        padding: 0rem;
+    }
+
+    .Content {
+        width: 100%;
+    }
+
+    .AppointmentInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Info {
+        width: 100%;
+        max-width: none;
+    }
+
+    .RequiredDocs {
+        width: 100%;
+        margin: 0rem;
+        max-width: none;
+    }
+
+    .Files {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .Files input {
+        margin: auto;
+        width: 40%;
+        margin-left: 55%;
+        transform: translateX(-55%);
+    }
+
+    .FileItemNameAndDelete i{
+        font-size: 6vw;
+        margin: .2rem;
+    }
+
+    .Submit {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

@@ -1,0 +1,57 @@
+.Pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .2rem;
+}
+
+.PageWrapper {
+    padding: 0rem .2rem;
+    background-color: rgb(192, 192, 192);
+    color: rgb(173, 173, 173);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(173, 173, 173);
+}
+
+.PageWrapper:hover {
+    filter: brightness(120%);
+    transition: .2s;
+    cursor: pointer;
+}
+
+.PageWrapper a{
+    text-decoration: none;
+    color: #000;
+}
+
+.Pagination a:hover {
+}
+
+
+.PreviousPage {
+
+}
+
+.CurrentPage {
+
+}
+
+.OtherPages {
+
+}
+
+.NextPage {
+
+}
+
+.Ellipsis {
+
+}
+
+.List {
+
+}

@@ -1,0 +1,312 @@
+.WrapperClientMode {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    color: #000;
+    margin: .5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.WrapperClientModeExpired {
+    width: 100%;
+    height: auto;
+    background-color: rgb(100, 100, 100);
+    color: #000;
+    margin: .5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.WrapperClientModeSet {
+    width: 100%;
+    height: auto;
+    background-color: rgb(46, 122, 46);
+    color: #000;
+    margin: .5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.WrapperClientModeDeclined {
+    width: 100%;
+    height: auto;
+    background-color: rgb(150, 24, 24);
+    color: #000;
+    margin: .5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.WrapperTherapistMode {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+    font-size: 1.4vw;
+    position: relative;
+    margin: .1rem 0rem;
+}
+
+.WrapperTherapistModeSet {
+    width: 100%;
+    height: auto;
+    background-color: rgb(46, 122, 46);
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+    font-size: 1.4vw;
+    position: relative;
+    margin: .1rem 0rem;
+    color: #fff;
+}
+
+.WrapperTherapistModeDeclined {
+    width: 100%;
+    height: auto;
+    background-color: rgb(150, 24, 24);
+    color: #000;
+    margin: 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+    font-size: 1.4vw;
+    position: relative;
+    margin: .1rem 0rem;
+    color: #fff;
+}
+
+.ClientAppointment {
+
+}
+
+.Professional {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+}
+
+.DateAndTime {
+    display: flex;
+    flex-direction: row;
+}
+
+.Date {
+    padding: .5rem;
+}
+
+.Time {
+    padding: .5rem;
+}
+
+.DeleteIconSet {
+    margin: auto .5rem;
+}
+
+
+.DeleteIconSet i{
+    font-size: 1.6vw;
+    color: rgb(150, 24, 24);
+}
+
+
+.DeleteIconSet i:hover {
+    cursor: pointer;
+    color:rgb(196, 56, 56);
+    transition: .2s;
+}
+
+
+.DeleteIconPending {
+    color:rgb(150, 24, 24);
+    margin: auto .5rem;
+}
+
+.DeleteIconPending i{
+    font-size: 1.2vw;
+}
+
+.DeleteIconPending i:hover {
+    cursor: pointer;
+    filter: brightness(150%);
+    transition: .2s;
+}
+
+.DisplayAdditionalInformationOpen {
+    height: auto;
+    width: 70%;
+    background-color: rgb(252, 252, 252);
+    border-radius: 4px;
+    border: 1px solid rgb(192, 192, 192);;
+    position: absolute;
+    padding: .2rem;
+    top: 1rem;
+    left: 1rem;
+    animation-name: show;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    z-index: 5;
+}
+
+.DisplayAdditionalInformationClosed {
+    display: none;
+}
+
+.AdditionalDate {}
+
+.Name {}
+
+.InfoAndAction {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+}
+
+.Info {
+    width: 90%;
+    height: 100%;
+    padding: .2rem;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 1.2vw;
+    overflow-y: scroll;
+    text-align: justify;
+    cursor: default;
+}
+
+.Info::-webkit-scrollbar {
+    width: 10px;
+}
+
+.Info::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.Info::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.Info::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.Buttons {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    padding: .2rem;
+    justify-content: space-between;
+    font-size: 2vw;
+}
+
+.CreateHealthcare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem .5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.CreateHealthcare i:hover {
+    filter: brightness(90%);
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .WrapperClientModeDeclined label{
+        font-size: 1.5vw;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .WrapperClientModeDeclined{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .WrapperClientModeDeclined .DateAndTime {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .WrapperClientModeDeclined label {
+        font-size: 4vw;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .DisplayAdditionalInformationClosed,
+    .DisplayAdditionalInformationOpen {
+        width: 90%;
+    }
+    .WrapperClientMode ,
+    .WrapperClientModeDeclined ,
+    .WrapperClientModeExpired ,
+    .WrapperClientModeSet ,
+    .WrapperTherapistMode ,
+    .WrapperTherapistModeDeclined ,
+    .WrapperTherapistModeSet  {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .DateAndTime {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .CreateHealthcare {
+        font-size: 6vw;
+        margin: .2rem 0rem 1rem 0rem;
+    }
+
+    .WrapperClientMode p,
+    .WrapperClientModeDeclined p,
+    .WrapperClientModeExpired p,
+    .WrapperClientModeSet p,
+    .WrapperTherapistMode p,
+    .WrapperTherapistModeDeclined p,
+    .WrapperTherapistModeSet  p{
+        font-size: 5vw;
+    }
+
+    .Buttons {
+        font-size: 9vw;
+    }
+}

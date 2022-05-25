@@ -1,0 +1,318 @@
+.Wrapper {
+    width: 80%;
+  margin-left: 20%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4rem;
+    margin-top: 2rem;
+    font-family: 'Roboto', sans-serif;
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    position: relative;
+}
+
+.ViewHealthcare {
+    width: 60%;
+    height: auto;
+    border: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+    background-color: rgba(43, 43, 43, 0.9);
+    color: #fff;
+    padding: .4rem;
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+}
+
+.SpinnerText {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation-name: pulse;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.Header {
+    padding: 0rem;
+    border-bottom: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Header i {
+    font-size: 30px;
+    padding: .7rem 0rem 0rem 0rem;
+}
+
+.Header i:hover {
+    transform: scale(1.05);
+    filter: brightness(70%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.Content {
+    width: 100%;
+}
+
+.InformationAndDocuments {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.Info {
+    padding: .4rem;
+    margin: 1rem .50rem;
+    max-width: 60%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Documents {
+    margin: 1rem .5rem;
+    max-width: 60%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Documents h5 {
+    padding: 0rem .2rem;
+    border-bottom: 2px solid #000;
+}
+
+.Requirements {
+    margin: 1rem .5rem;
+    max-width: 100%;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+
+}
+
+.Action {
+    display: flex;
+    flex-direction: row;
+    margin: .2rem 0rem .5rem .5rem;
+}
+
+.ActionLightOn {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #e9d370;
+    border: 2px solid #e0b12f;
+    -webkit-box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+    box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+    margin: .3rem;
+}
+
+
+.ActionLightOff {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 82%);
+    border: 2px solid #757575;
+    -webkit-box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+    box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+    margin: .3rem;
+}
+
+.ItemToDownload {
+    border: 1px solid #000;
+    margin: .2rem;
+    border-radius: 4px;
+    padding: .2rem;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.Upload {
+    padding: .2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.UploadFiles {
+    padding: .2rem 0rem;
+
+}
+
+.Files {
+    min-height: 6rem;
+    width: 100%;
+    margin: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.FileItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: .4rem 0rem 0rem 0rem;
+}
+
+.FileItemNameAndDelete {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.FileItemNameAndDelete i {
+    color: rgb(150, 24, 24);
+    font-size: 1.6vw;
+}
+
+.FileItemNameAndDelete i:hover {
+    filter: brightness(200%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.FileItemInformation{
+    width: 100%;
+}
+
+.FileItemInformation input{
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.42) !important;
+}
+
+.Submit {
+    padding: .2rem 0rem;
+    margin: 1rem 0rem 0rem 0rem;
+}
+
+.Appointments {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Appointments button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.Appointments button:hover {
+    cursor: pointer;
+    transform: scale(1.1) translateX(-.6rem);
+    transition: .2s;
+}
+
+.Appointments button:active {
+    transform: scale(0.9);
+}
+
+.Rehabilitator {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    background-color: rgba(0, 0, 0,0.2);
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Wrapper {
+        width: 80%;
+        margin-left: 24%;
+        padding-bottom: 10rem;
+    }
+
+    .ViewHealthcareTherapist {
+        width: 60%;
+    }
+}
+
+@media (max-width: 900px) {
+    .Wrapper {
+        padding-top: 5rem;
+        width: 100%;
+        margin: 0rem;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .Wrapper {
+        width: 100%;
+        padding-bottom: 24rem;
+    }
+
+    .ViewHealthcare {
+        width: 100%;
+    }
+
+    .Header {
+        padding-bottom: .5rem;
+    }
+
+    .Header i {
+        padding: 0rem;
+    }
+
+    .InformationAndDocuments {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Info {
+        width: 100%;
+        max-width: none;
+    }
+
+    .Documents {
+        width: 100%;
+        max-width: none;
+    }
+
+    .Appointments button {
+        text-align: right;
+    }
+
+}

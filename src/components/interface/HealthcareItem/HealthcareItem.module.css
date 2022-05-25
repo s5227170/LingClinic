@@ -1,0 +1,189 @@
+.Wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    margin: .5rem 0rem;
+    border: 1px solid rgb(131, 131, 131); 
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.42);
+    background-color: rgb(46, 122, 46);
+    color: #fff;
+
+}
+
+.Wrapper h4 {
+    font-size: 1vw;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.DetailsInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.Diagnosis {
+    width: 100%;
+    border-bottom: 2px solid rgb(131, 131, 131);
+    padding: .5rem .5rem 0rem .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+}
+
+.Diagnosis h4 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.DateStatus {
+    width: 60%;
+    border-right: 2px solid rgb(131, 131, 131);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Date {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid rgb(131, 131, 131);
+}
+
+.Status {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ActionAndView {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+}
+
+.Action {
+    width: 60%;
+    padding: .2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 2px solid rgb(131, 131, 131);
+}
+
+.ActionLightOn {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #e9d370;
+    border: 2px solid #e0b12f;
+    -webkit-box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+    box-shadow: 0px 0px 15px 4px rgb(231, 211, 154);
+}
+
+
+.ActionLightOff {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 82%);
+    border: 2px solid #757575;
+    -webkit-box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+    box-shadow: 0px 0px 20px 3px rgb(209, 209, 209);
+}
+
+.View {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    transition: .2s;
+}
+
+.View:hover{
+    cursor: pointer;
+}
+
+.View:hover * {
+    cursor: pointer;
+    text-shadow: 0px 0px 10px rgb(255, 255, 255);
+    transition: .2s;
+}
+
+
+@media (max-width: 1200px) {
+    .DetailsInfo {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    
+    .Details h4 {
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .DateStatus {
+        padding-top: .2rem;
+        width: 100%;
+        font-size: 3vw;
+    }
+
+    .Date {
+        border: 0rem;
+    }
+
+    .DetailsInfo .DateStatus {
+        display: flex;
+        flex-direction: column;
+        border: 0rem;
+    }
+
+    .Action {
+        border-left: 0rem;
+        border-right: 0rem;
+    }
+
+    .ActionAndView {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .DetailsInfo .Action {
+        border: 2px solid #757575;
+        width: 100%;
+    }
+
+    .View {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .Details h4 {
+        font-size: 3vw;
+    }
+}
