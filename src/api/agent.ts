@@ -50,7 +50,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const user = {
-  details: (token: string) => requests.get(userEndPoint + "getuser", {}, token),
+  details: (token: string) =>
+    requests.get(axios.defaults.baseURL + userEndPoint + "getuser", {}, token),
   create: (
     uid: string,
     email: string,
@@ -59,7 +60,7 @@ const user = {
     token: string
   ) =>
     requests.post(
-      userEndPoint + "createuser",
+      axios.defaults.baseURL + userEndPoint + "createuser",
       { uid, email, forename, surname },
       token
     ),
@@ -75,10 +76,17 @@ if (process.env.NODE_ENV === "development") {
 
 const files = {
   professionalUpload: (token: string, documents: FormData) =>
-    requests.postFile(fileEndPoint + "uploadTherapist", documents, token),
+    requests.postFile(
+      axios.defaults.baseURL + fileEndPoint + "uploadTherapist",
+      documents,
+      token
+    ),
   clientUpload: (token: string, documents: FormData, healthcareID: string) =>
     requests.postFile(
-      fileEndPoint + "uploadClient/" + healthcareID.toString(),
+      axios.defaults.baseURL +
+        fileEndPoint +
+        "uploadClient/" +
+        healthcareID.toString(),
       documents,
       token
     ),
@@ -87,9 +95,17 @@ const files = {
     docNames: string[],
     token: string
   ) =>
-    requests.getFile(fileEndPoint + "downloadFile", { mode, docNames }, token),
+    requests.getFile(
+      axios.defaults.baseURL + fileEndPoint + "downloadFile",
+      { mode, docNames },
+      token
+    ),
   downloadClient: (mode: "Client", docNames: string[], token: string) =>
-    requests.getFile(fileEndPoint + "downloadFile", { mode, docNames }, token),
+    requests.getFile(
+      axios.defaults.baseURL + fileEndPoint + "downloadFile",
+      { mode, docNames },
+      token
+    ),
 };
 
 //Setting the cloud function end-point name
@@ -110,7 +126,7 @@ const healthcare = {
     documents: Docs[]
   ) =>
     requests.post(
-      healthcareEndPoint + "createhealthcare",
+      axios.defaults.baseURL + healthcareEndPoint + "createhealthcare",
       {
         appointment,
         diagnosis,
@@ -121,12 +137,20 @@ const healthcare = {
       token
     ),
   details: (token: string, healthcareID: string) =>
-    requests.get(healthcareEndPoint + "gethealthcare", { healthcareID }, token),
+    requests.get(
+      axios.defaults.baseURL + healthcareEndPoint + "gethealthcare",
+      { healthcareID },
+      token
+    ),
   list: (token: string) =>
-    requests.get(healthcareEndPoint + "listhealthcares", {}, token),
+    requests.get(
+      axios.defaults.baseURL + healthcareEndPoint + "listhealthcares",
+      {},
+      token
+    ),
   clientFileUpload: (token: string, healthcareID: string, fileDocs: Docs[]) =>
     requests.post(
-      healthcareEndPoint + "clienthealthcaredocuments",
+      axios.defaults.baseURL + healthcareEndPoint + "clienthealthcaredocuments",
       { healthcareID, fileDocs },
       token
     ),
@@ -138,19 +162,19 @@ const healthcare = {
     fileDocs: Docs[]
   ) =>
     requests.post(
-      healthcareEndPoint + "healthcareupdate",
+      axios.defaults.baseURL + healthcareEndPoint + "healthcareupdate",
       { healthcareID, mode, requirements, fileDocs },
       token
     ),
   close: (healthcareID: string, token: string) =>
     requests.post(
-      healthcareEndPoint + "completehealthcare",
+      axios.defaults.baseURL + healthcareEndPoint + "completehealthcare",
       { healthcareID },
       token
     ),
   seen: (healthcareID: string, token: string) =>
     requests.post(
-      healthcareEndPoint + "confirmchanges",
+      axios.defaults.baseURL + healthcareEndPoint + "confirmchanges",
       { healthcareID },
       token
     ),
@@ -167,7 +191,7 @@ if (process.env.NODE_ENV === "development") {
 const appointments = {
   detailsTherapist: (appointmentID: string, token: string) =>
     requests.get(
-      appointmentsEndPoint + "getappointment",
+      axios.defaults.baseURL + appointmentsEndPoint + "getappointment",
       { appointmentID },
       token
     ),
@@ -179,7 +203,9 @@ const appointments = {
     token: string
   ) =>
     requests.post(
-      appointmentsEndPoint + "createappointmenttherapist",
+      axios.defaults.baseURL +
+        appointmentsEndPoint +
+        "createappointmenttherapist",
       { professional, information, StartTime, EndTime },
       token
     ),
@@ -190,29 +216,43 @@ const appointments = {
     token: string
   ) =>
     requests.post(
-      appointmentsEndPoint + "createappointmentsrehabilitator",
+      axios.defaults.baseURL +
+        appointmentsEndPoint +
+        "createappointmentsrehabilitator",
       { professional, items, healthcareID },
       token
     ),
   listPersonal: (token: string) =>
-    requests.get(appointmentsEndPoint + "getpersonalactivity", {}, token),
+    requests.get(
+      axios.defaults.baseURL + appointmentsEndPoint + "getpersonalactivity",
+      {},
+      token
+    ),
   list: (token: string) =>
-    requests.get(appointmentsEndPoint + "getappointments", {}, token),
+    requests.get(
+      axios.defaults.baseURL + appointmentsEndPoint + "getappointments",
+      {},
+      token
+    ),
   accept: (appointmentID: string, token: string) =>
     requests.post(
-      appointmentsEndPoint + "acceptappointmenttherapist",
+      axios.defaults.baseURL +
+        appointmentsEndPoint +
+        "acceptappointmenttherapist",
       { appointmentID },
       token
     ),
   decline: (appointmentID: string, token: string) =>
     requests.post(
-      appointmentsEndPoint + "declineappointmenttherapist",
+      axios.defaults.baseURL +
+        appointmentsEndPoint +
+        "declineappointmenttherapist",
       { appointmentID },
       token
     ),
   cancelAppointment: (appointmentID: string, token: string) =>
     requests.del(
-      appointmentsEndPoint + "cancelappointment",
+      axios.defaults.baseURL + appointmentsEndPoint + "cancelappointment",
       { appointmentID },
       token
     ),
@@ -229,21 +269,29 @@ if (process.env.NODE_ENV === "development") {
 const schedule = {
   personalScheduleRehabilitator: (token: string) =>
     requests.get(
-      scheduleEndPoint + "getpersonalschedulerehabilitator",
+      axios.defaults.baseURL +
+        scheduleEndPoint +
+        "getpersonalschedulerehabilitator",
       {},
       token
     ),
   personalScheduleTherapist: (token: string) =>
-    requests.get(scheduleEndPoint + "getpersonalscheduletherapist", {}, token),
+    requests.get(
+      axios.defaults.baseURL +
+        scheduleEndPoint +
+        "getpersonalscheduletherapist",
+      {},
+      token
+    ),
   therapistSchedule: (therapistID: string, token: string) =>
     requests.get(
-      scheduleEndPoint + "gettherapistschedule",
+      axios.defaults.baseURL + scheduleEndPoint + "gettherapistschedule",
       { therapistID },
       token
     ),
   rehabilitatorSchedule: (rehabilitatorID: string, token: string) =>
     requests.get(
-      scheduleEndPoint + "getrehabilitatorschedule",
+      axios.defaults.baseURL + scheduleEndPoint + "getrehabilitatorschedule",
       { rehabilitatorID },
       token
     ),

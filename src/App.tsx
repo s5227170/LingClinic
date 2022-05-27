@@ -59,8 +59,6 @@ function App() {
     </div>
   }
 
-  console.log(process.env.NODE_ENV)
-
   return (
     <BrowserRouter>
       <ScrollToTop>
