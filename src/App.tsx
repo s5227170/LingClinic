@@ -33,7 +33,6 @@ function App() {
   const { authenticated } = useSelector((state: RootState) => state.auth);
   const { userType } = useSelector((state: RootState) => state.auth);
   const { loading } = useSelector((state: RootState) => state.auth);
-  console.log(process.env.FIREBASE_API_KEY)
 
   useEffect(() => {
     const authenticator = auth;

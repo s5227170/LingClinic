@@ -17,10 +17,11 @@ import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEff
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { bookrehabilitatorappointments, emptyschedule, getschedule, setAppointmentError, setAppointmentSuccess } from '../../store/actions/appointments';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { RehabilitatorAppointment } from '../../store/types';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { clearhealthcare, gethealthcare } from '../../store/actions/healthcare';
 import { PuffLoader } from 'react-spinners';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
+import IconWithTooltip from '../../components/interface/IconWithTooltip/IconWithTooltip';
 
 const AppointmentRehabilitator: FC = () => {
     const dispatch = useDispatch();
@@ -109,24 +110,24 @@ const AppointmentRehabilitator: FC = () => {
         if (cleanData.length == 1) {
             filteredData.push(cleanData.slice(0, 1))
         } else {
-            for(let i=0; i<cleanData.length; i++) {
+            for (let i = 0; i < cleanData.length; i++) {
                 filteredData.push(cleanData.splice(cleanData.length - healthcare!.appointmentsRehabRequired + i, healthcare!.appointmentsRehabRequired + i))
             }
         }
 
-        if(!filteredData[0]) {
+        if (!filteredData[0]) {
             return dispatch(setAppointmentError("You haven't picked any appointments."))
         }
 
-        for(let i = 0; i < filteredData[0].length;i++) {
-            filteredData[0][i] = {...filteredData[0][i], _id: uuid(), IsBlock: true}
+        for (let i = 0; i < filteredData[0].length; i++) {
+            filteredData[0][i] = { ...filteredData[0][i], _id: uuid(), IsBlock: true }
         }
 
         if (filteredData[0].length != healthcare!.appointmentsRehabRequired) {
             return dispatch(setAppointmentError("Please set all required appointments."))
         }
 
-        dispatch(bookrehabilitatorappointments(authToken, rehabilitator , healthcare!._id, filteredData[0]))
+        dispatch(bookrehabilitatorappointments(authToken, rehabilitator, healthcare!._id, filteredData[0]))
     }
 
     const rehabilitatorHandler = (e) => {
@@ -140,7 +141,7 @@ const AppointmentRehabilitator: FC = () => {
     }, [rehabilitator])
 
     useEffect(() => {
-        if(schedule) {
+        if (schedule) {
             setData(schedule)
         }
     }, [schedule])
@@ -157,28 +158,12 @@ const AppointmentRehabilitator: FC = () => {
         <div className={classes.Wrapper}>
             <BackgroundEffect />
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             {/*  @ts-ignore */}
             {success.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{success}</h4>
-                    </div>
-                </div>
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.Appointment}>
@@ -186,19 +171,9 @@ const AppointmentRehabilitator: FC = () => {
                     <Fragment>
                         <div className={classes.Header}>
                             <h4>Book rehabilitator appointments</h4>
-                            {['top'].map((placement) => (
-                                <OverlayTrigger
-                                    key={placement}
-                                    placement={"top"}
-                                    overlay={
-                                        <Tooltip id={`tooltip-${placement}`}>
-                                            <strong>Go back</strong>
-                                        </Tooltip>
-                                    }
-                                >
-                                    <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
-                                </OverlayTrigger>
-                            ))}
+                            <IconWithTooltip position={"top"} clickHandler={returnHandler} tooltip={"Go back"}>
+                                <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
+                            </IconWithTooltip>
                         </div>
                         <div className={classes.Content}>
                             {/* Add the document download list here */}
@@ -247,7 +222,7 @@ const AppointmentRehabilitator: FC = () => {
                                     eventSettings={{
                                         dataSource: data
                                     }}
-                                    
+
                                     actionBegin={(e) => {
                                         let weekEnds = [0, 6];
                                         if (

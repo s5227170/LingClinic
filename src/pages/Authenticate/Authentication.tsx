@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { forEachChild } from 'typescript';
 import FormInput from '../../components/interface/FormInput/FormInput';
 import { RootState } from '../../store';
 import { forgotpassword, login, register, setError, setSuccess } from '../../store/actions/auth';
@@ -8,7 +7,7 @@ import { v4 as uuid } from 'uuid'
 
 import classes from './Authentication.module.css';
 import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEffect';
-import { setAppointmentError, setAppointmentSuccess } from '../../store/actions/appointments';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
 
 const Authenticate: FC = () => {
     const dispatch = useDispatch();
@@ -131,30 +130,8 @@ const Authenticate: FC = () => {
         <div className={classes.Wrapper}>
             <BackgroundEffect />
             <BackgroundEffect />
-            {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
-                :
-                null}
-            {/*  @ts-ignore */}
-            {successAuth.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{successAuth}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.AuthenticateMessage}>

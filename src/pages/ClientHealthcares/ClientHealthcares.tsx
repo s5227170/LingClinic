@@ -6,16 +6,18 @@ import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEff
 import HealthcareProfessionalList from '../../components/interface/HealthcareProfessionalList/HealthcareProfessionalList';
 import { RootState } from '../../store';
 import { v4 as uuid } from "uuid";
-import { emptyhealthcares, listhealthcares, setHealthcareSuccess } from '../../store/actions/healthcare';
+import { emptyhealthcares, listhealthcares, setHealthcareError, setHealthcareSuccess } from '../../store/actions/healthcare';
 
 import classes from './ClientHealthcares.module.css';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
 const ClientHealthcares: FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { authToken, user } = useSelector(
         (state: RootState) => state.auth
     );
-    const { healthcareList } = useSelector(
+    const { healthcareList, error, success } = useSelector(
         (state: RootState) => state.healthcare
     );
 
@@ -31,9 +33,9 @@ const ClientHealthcares: FC = () => {
         return () => {
             dispatch(emptyhealthcares())
             dispatch(setHealthcareSuccess(""))
-          }
+        }
     }, [])
-    
+
     useEffect(() => {
         if (healthcareList) {
             dispatch(setHealthcareSuccess(""))
@@ -50,9 +52,9 @@ const ClientHealthcares: FC = () => {
             if (therapistMode == "Appointments") {
                 return navigate("/clientAppointments");
             }
-            if(therapistMode == "Calendar") {
+            if (therapistMode == "Calendar") {
                 return navigate("/Calendar");
-              }
+            }
         }
     }, [therapistMode])
 
@@ -61,9 +63,9 @@ const ClientHealthcares: FC = () => {
             if (rehabMode == "Healthcares") {
                 return navigate("/clientHealthcares");
             }
-            if(rehabMode == "Calendar") {
+            if (rehabMode == "Calendar") {
                 return navigate("/Calendar");
-              }
+            }
         }
     }, [rehabMode])
 
@@ -75,9 +77,25 @@ const ClientHealthcares: FC = () => {
         setRehabMode(e.itemData.value)
     }
 
+    const dropModalHandler = (e) => {
+        e.preventDefault();
+        if (e.target === e.currentTarget) {
+            dispatch(setHealthcareSuccess(""))
+            dispatch(setHealthcareError(""))
+        }
+    }
+
     return (
         <div className={classes.Wrapper}>
             <BackgroundEffect />
+            {error.length > 0 ?
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
+            {success.length > 0 ?
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
             <div className={classes.ClientHealthcares}>
                 <div className={classes.Header}>
                     <h2>Client Healthcares</h2>
@@ -96,7 +114,7 @@ const ClientHealthcares: FC = () => {
                             </div>
 
                         </div>
-                        }
+                    }
                 </div>
                 <div className={classes.Content}>
                     <label>Slide table if using a mobile phone</label>

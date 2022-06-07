@@ -12,7 +12,10 @@ import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEff
 import DocFile from '../../components/interface/DocFile/DocFile';
 import { clearhealthcare, closehealthcare, gethealthcare, seenhealthcare, setHealthcareError, setHealthcareSuccess, updatehealthcare } from '../../store/actions/healthcare';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import Modal from '../../components/interface/Modal/Modal';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
+import IconWithTooltip from '../../components/interface/IconWithTooltip/IconWithTooltip';
 const TherapistHealthcareView: FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -57,10 +60,10 @@ const TherapistHealthcareView: FC = () => {
     }, [success])
 
     useEffect(() => {
-      if(success == "success" || success == "success_update") {
-        return navigate("/clientHealthcares")
-      }
-    }, [success]) 
+        if (success == "success" || success == "success_update") {
+            return navigate("/clientHealthcares")
+        }
+    }, [success])
 
     useEffect(() => {
         if (healthcare) {
@@ -114,9 +117,9 @@ const TherapistHealthcareView: FC = () => {
                     newFileDetails.splice(i, 1)
                 }
             };
-            if(newData.length == 0 && requirements.length > 0) {
-                setmode("requirements")
-            }
+        if (newData.length == 0 && requirements.length > 0) {
+            setmode("requirements")
+        }
         setFileDetails(newFileDetails)
         setUploadedFiles(newData)
         setFileNames(newData)
@@ -155,17 +158,22 @@ const TherapistHealthcareView: FC = () => {
                 newReqs.splice(i, 1)
             }
         }
-        if(newReqs.length == 0 && uploadedFiles.length > 0) {
+        if (newReqs.length == 0 && uploadedFiles.length > 0) {
             setmode("documents")
         }
         setRequirements(newReqs)
     }
 
+    console.log(requirements)
+
     const submitUploadHandler = () => {
-        if(uploadedFiles.length == 0 && fileDetails.length == 0) {
+        if (requirements.length == 0 && fileDetails.length == 0) {
+            return dispatch(setHealthcareError("No changes have been made"))
+        }
+        if (uploadedFiles.length == 0 && fileDetails.length == 0) {
             setConfirmationDocs(true)
         }
-        if(requirements.length == 0) {
+        if (requirements.length == 0) {
             setConfirmationReqs(true)
         }
 
@@ -180,9 +188,9 @@ const TherapistHealthcareView: FC = () => {
             }
         }
 
-        for(let i = 0; i < requirements.length; i++) {
-            if(requirements[i] == "")
-            return dispatch(setHealthcareError("Empty requirement descriptions"))
+        for (let i = 0; i < requirements.length; i++) {
+            if (requirements[i] == "")
+                return dispatch(setHealthcareError("Empty requirement descriptions"))
         }
 
         if (fileDetails.length > 0 && uploadedFiles!.length > 0 && fileDetails.length == uploadedFiles!.length) {
@@ -197,15 +205,15 @@ const TherapistHealthcareView: FC = () => {
             setmode("mixed")
         }
 
-        if(mode == "requirements" || mode == "documents" || mode == "mixed") {
-            if(id)
-            dispatch(updatehealthcare(id, authToken, mode, requirements, uploadedFiles, fileDetails))
+        if (mode == "requirements" || mode == "documents" || mode == "mixed") {
+            if (id)
+                dispatch(updatehealthcare(id, authToken, mode, requirements, uploadedFiles, fileDetails))
         }
     }
 
     const seenHandler = () => {
-        if(id)
-        dispatch(seenhealthcare(authToken, id))
+        if (id)
+            dispatch(seenhealthcare(authToken, id))
     }
 
     const completeHandler = () => {
@@ -214,8 +222,8 @@ const TherapistHealthcareView: FC = () => {
 
     const completeConfirmedHandler = () => {
         setWarning(false)
-        if(id)
-        dispatch(closehealthcare(authToken, id))
+        if (id)
+            dispatch(closehealthcare(authToken, id))
     }
 
     const confirmReqsHandler = () => {
@@ -254,66 +262,63 @@ const TherapistHealthcareView: FC = () => {
     return (
         <div className={classes.Wrapper}>
             <BackgroundEffect />
-            {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
-            {/*  @ts-ignore */}
             {success.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{success}</h4>
-                    </div>
-                </div>
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
-                {warning ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal ">
-                        <div className="Modal-header">
+            {
+                warning ?
+                    <Modal width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler}>
+                        <div className={classes.CompletionModalHeader}>
                             <h4 className="">Warning</h4>
                             <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
                         </div>
-                        <h4>Are you sure you want to confirm the healthcare as completed? This is permanent.</h4>
-                        <label onClick={completeConfirmedHandler} className={classes.ConfirmComplete}><u>Confirm</u></label>
-                        <label  className={classes.DeclineComplete}><u onClick={dropModalHandler}>Decline</u></label>
-                    </div>
-                </div>
-                :
-                null}
+                        <div className={classes.CompletionModalContent}>
+                            <h4>Are you sure you want to confirm the healthcare as complete? This is permanent.</h4>
+                            <div className={classes.CompletionModalOutcome}>
+                                <label onClick={completeConfirmedHandler} className={classes.ConfirmComplete}>Confirm</label>
+                                <label onClick={dropModalHandler} className={classes.DeclineComplete}>Decline</label>
+                            </div>
+                        </div>
+                    </Modal>
+                    :
+                    null
+            }
             <div className={classes.ViewHealthcareTherapist}>
                 {!loading && healthcare ?
                     <Fragment>
                         <div className={classes.Header}>
                             <h2>Healthcare</h2>
-                            {['top'].map((placement) => (
-                                <OverlayTrigger
-                                    key={placement}
-                                    placement={"top"}
-                                    overlay={
-                                        <Tooltip id={`tooltip-${placement}`}>
-                                            <strong>Go back</strong>
-                                        </Tooltip>
-                                    }
-                                >
-                                    <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
-                                </OverlayTrigger>
-                            ))}
+                            <IconWithTooltip position={"top"} clickHandler={returnHandler} tooltip={"Go back"}>
+                                <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
+                            </IconWithTooltip>
                         </div>
                         <div className={classes.Content}>
+                            {/* Required action light */}
+                            <div className={classes.Action}>
+                                <div className={classes.ActionCombine}>
+                                    {healthcare.therapistRequirement ? (
+                                        <div className={classes.Changes}>
+                                            <label>Unseen changes</label>
+                                            <div className={classes.ActionLightOn}></div>
+                                        </div>
+                                    ) : (
+                                        <div className={classes.Changes}>
+                                            <label>No new changes</label>
+                                            <div className={classes.ActionLightOff}></div>
+                                        </div>
+                                    )}
+                                    <div className={classes.Changes}>
+                                        <label>Status: </label>
+                                        <label>{healthcare.complete ? "Completed" : "Active"}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* End of required action light */}
                             {/* All current files */}
                             <div className={classes.CurrentFiles}>
                                 <div className={classes.Documents}>
@@ -321,7 +326,7 @@ const TherapistHealthcareView: FC = () => {
                                     <label>CLient uploaded documents</label>
                                     {healthcare.clientDocs.map((doc, index) => {
                                         return (
-                                            <DocFile key={index} name={doc.name} information={doc.information} link={clientDocLinks![index]} />
+                                            <DocFile key={index} name={doc.information} information={doc.information} link={clientDocLinks![index]} />
                                         )
                                     })}
                                 </div>
@@ -330,40 +335,21 @@ const TherapistHealthcareView: FC = () => {
                                     <label>Therapist uploaded documents</label>
                                     {healthcare.documents.map((doc, index) => {
                                         return (
-                                            <DocFile key={index} name={doc.name} information={doc.information} link={docLinks![index]} />
+                                            <DocFile key={index} name={doc.information} information={doc.information} link={docLinks![index]} />
                                         )
                                     })}
                                 </div>
                             </div>
+                            {/* End of all current files */}
                             {/* Requirements section */}
-                            {/* @ts-ignore */}
                             <div className={classes.RequirementControl}>
-                                {/* Required action light */}
-                                <div className={classes.Action}>
-                                    <div className={classes.ActionCombine}>
-                                        {healthcare.therapistRequirement ? (
-                                            <div className={classes.Changes}>
-                                                <label>Unseen changes</label>
-                                                <div className={classes.ActionLightOn}></div>
-                                            </div>
-                                        ) : (
-                                            <div className={classes.Changes}>
-                                                <label>No new changes</label>
-                                                <div className={classes.ActionLightOff}></div>
-                                            </div>
-                                        )}
-                                        <div className={classes.Changes}>
-                                        <label>Status: </label>
-                                        <label>{healthcare.complete? "Completed" : "Active"}</label>
-                                        </div>
-                                    </div>
-                                    <div className={classes.ActionConfirm}>
-                                        <label>Confirm client documents as seen</label>
-                                        <ButtonComponent className={classes.SeenConfirm} onClick={seenHandler}>Mark changes as seen</ButtonComponent>
-                                        <label>Mark healthcare as complete</label>
-                                        <ButtonComponent className={classes.SeenConfirm} onClick={completeHandler}>Mark as complete</ButtonComponent>
-                                    </div>
+                                <div className={classes.ActionConfirm}>
+                                    <label>Confirm client documents as seen</label>
+                                    <ButtonComponent className={classes.SeenConfirm} onClick={seenHandler}>Mark changes as seen</ButtonComponent>
+                                    <label>Mark healthcare as complete</label>
+                                    <ButtonComponent className={classes.CompleteConfirm} onClick={completeHandler}>Mark as complete</ButtonComponent>
                                 </div>
+                                {/* End requirement section */}
                                 {/* Requirement control */}
                                 <div className={classes.RequiredDocs}>
                                     <div className={classes.AddRequirement} onClick={addRequirementHandler}>
@@ -387,6 +373,7 @@ const TherapistHealthcareView: FC = () => {
                                         :
                                         null}
                                 </div>
+                                {/* End of requirement control */}
                                 {/* Upload more document control */}
                                 <div className={classes.Upload}>
                                     <label><u>Please select all files and documents regarding the current healthcare at once.</u></label>
@@ -409,6 +396,7 @@ const TherapistHealthcareView: FC = () => {
                                         :
                                         null}
                                 </div>
+                                {/* End of document upload control */}
                                 <label>Please confirm requirements and file uploads when done. In case of an alert when everything is onfirmed, click submit a second time</label>
                                 <div className={classes.Submit}>
                                     {(fileDetails.length > 0 && uploadedFiles!.length > 0 && requirements.length > 0) ? <label>Current changes will include files and requirements.</label> : (fileDetails.length > 0 && uploadedFiles!.length > 0 && requirements.length == 0) ? <label>Current changes will include only files.</label> : (requirements.length > 0 && fileDetails.length == 0 && uploadedFiles!.length == 0) ? <label>Current changes will include only requirements</label> : <label>No changes currently</label>}
@@ -423,7 +411,7 @@ const TherapistHealthcareView: FC = () => {
                         <h4 className={classes.SpinnerText}>Loading...</h4>
                     </Fragment>}
             </div>
-        </div>
+        </div >
     );
 }
 

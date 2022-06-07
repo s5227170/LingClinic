@@ -4,18 +4,17 @@ import { RootState } from '../../store';
 
 import Clinic from '../../static/images/About the clinic.jpg';
 import Team from '../../static/images/Meet the team.jpg';
-import Exercises from '../../static/images/Exercises.jpg';
 import Kinesitherapy from '../../static/images/Kinesitherapy.jpg';
 import PermanentIllnesses from '../../static/images/PermanentIllnessess.jpg';
 import PhysiotherapyService from '../../static/images/PhysiotherapyService.jpg';
-import ServicePrices from '../../static/images/Prices.jpg';
-import { v4 as uuid } from "uuid";
 
 import classes from './Homepage.module.css';
 import "./Homepage.css";
 import { setError, setSuccess } from '../../store/actions/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
 
 const Homepage: FC = () => {
     const navigate = useNavigate();
@@ -23,9 +22,11 @@ const Homepage: FC = () => {
     const { error, successAuth } = useSelector((state: RootState) => state.auth);
 
     useEffect(() => {
-      if(successAuth) {
-          dispatch(setSuccess(""))
-      }
+        if (successAuth) {
+            setTimeout(() => {
+                dispatch(setSuccess(""))
+            }, 1000);
+        }
     }, [successAuth])
 
     const bookHandler = () => {
@@ -43,33 +44,17 @@ const Homepage: FC = () => {
             dispatch(setError(""))
         }
     }
-    
+
     return (
         <div className={classes.Wrapper}>
             {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             {/*  @ts-ignore */}
-            {successAuth. length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{successAuth}</h4>
-                    </div>
-                </div>
+            {successAuth.length > 0 ?
+                <SuccessModal message={successAuth} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.Wellcome}>

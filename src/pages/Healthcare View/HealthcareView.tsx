@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FC, Fragment, useEffect, useState } from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { enableRipple } from '@syncfusion/ej2-base';
 
 import { useNavigate, useParams } from 'react-router-dom';
@@ -35,6 +34,9 @@ import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEff
 import { v4 as uuid } from "uuid";
 import { RehabilitatorAppointment } from '../../store/types';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
+import IconWithTooltip from '../../components/interface/IconWithTooltip/IconWithTooltip';
 
 const HealthcareView: FC = () => {
     const dispatch = useDispatch();
@@ -136,9 +138,9 @@ const HealthcareView: FC = () => {
         if (healthcare?.requirements.length != uploadedFiles?.length) {
             return dispatch(setHealthcareError("Please upload only the requested amount of files."))
         }
-        for(let i = 0; i < fileDetails.length; i++) {
-            if(fileDetails[i] == "")
-            return dispatch(setHealthcareError("Empty file descriptions"))
+        for (let i = 0; i < fileDetails.length; i++) {
+            if (fileDetails[i] == "")
+                return dispatch(setHealthcareError("Empty file descriptions"))
         }
         if (fileDetails.length != uploadedFiles?.length) {
             return dispatch(setHealthcareError("Please add information to all fields."))
@@ -210,28 +212,12 @@ const HealthcareView: FC = () => {
             <BackgroundEffect />
             {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             {/*  @ts-ignore */}
             {success.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{success}</h4>
-                    </div>
-                </div>
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.ViewHealthcare}>
@@ -239,19 +225,9 @@ const HealthcareView: FC = () => {
                     <Fragment>
                         <div className={classes.Header}>
                             <h2>Healthcare</h2>
-                            {['top'].map((placement) => (
-                                <OverlayTrigger
-                                    key={placement}
-                                    placement={"top"}
-                                    overlay={
-                                        <Tooltip id={`tooltip-${placement}`}>
-                                            <strong>Go back</strong>
-                                        </Tooltip>
-                                    }
-                                >
-                                    <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
-                                </OverlayTrigger>
-                            ))}
+                            <IconWithTooltip position={"top"} clickHandler={returnHandler} tooltip={"Go back"}>
+                                <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
+                            </IconWithTooltip>
                         </div>
                         <div className={classes.Content}>
                             <div className={classes.InformationAndDocuments}>
@@ -289,11 +265,11 @@ const HealthcareView: FC = () => {
                                             <div className={classes.ActionLightOn}></div>
                                         </Fragment>
                                     ) : (
-                                            <Fragment>
-                                                <label>No action required</label>
-                                                <div className={classes.ActionLightOff}></div>
-                                            </Fragment>
-                                        )}
+                                        <Fragment>
+                                            <label>No action required</label>
+                                            <div className={classes.ActionLightOff}></div>
+                                        </Fragment>
+                                    )}
                                 </div>
                                 {healthcare.requirements.length > 0 ?
                                     <Fragment>

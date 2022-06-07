@@ -27,7 +27,6 @@ import "../../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-react-inputs/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-react-dropdowns/styles/material.css";
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import { v4 as uuid } from "uuid";
@@ -35,6 +34,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { booktherapistappointment, emptyschedule, getschedule, setAppointmentError, setAppointmentSuccess } from '../../store/actions/appointments';
 import { PuffLoader } from 'react-spinners';
 import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEffect';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
+import IconWithTooltip from '../../components/interface/IconWithTooltip/IconWithTooltip';
 
 const AppointmentTherapist: FC = () => {
     const dispatch = useDispatch();
@@ -166,28 +168,12 @@ const AppointmentTherapist: FC = () => {
             <BackgroundEffect />
             {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             {/*  @ts-ignore */}
             {success.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{success}</h4>
-                    </div>
-                </div>
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.Appointment}>
@@ -195,19 +181,9 @@ const AppointmentTherapist: FC = () => {
                     <Fragment>
                         <div className={classes.Header}>
                             <h2>Therapist Appointment</h2>
-                            {['top'].map((placement) => (
-                                <OverlayTrigger
-                                    key={placement}
-                                    placement={"top"}
-                                    overlay={
-                                        <Tooltip id={`tooltip-${placement}`}>
-                                            <strong>Go back</strong>
-                                        </Tooltip>
-                                    }
-                                >
-                                    <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
-                                </OverlayTrigger>
-                            ))}
+                            <IconWithTooltip position={"top"} clickHandler={returnHandler} tooltip={"Go back"}>
+                                <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
+                            </IconWithTooltip>
                         </div>
                         <div className={classes.DropDownWrapper}>
                             <label>Please choose a therapist in order to see available bookings</label>

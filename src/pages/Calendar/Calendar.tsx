@@ -3,8 +3,11 @@ import { Inject, ScheduleComponent, Week, Month, Agenda } from '@syncfusion/ej2-
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEffect';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
 import { RootState } from '../../store';
-import { emptyPersonalSchedule, getpersonalschedule } from '../../store/actions/appointments';
+import { emptyPersonalSchedule, getpersonalschedule, setAppointmentError, setAppointmentSuccess } from '../../store/actions/appointments';
 
 import classes from './Calendar.module.css';
 const Calendar: FC = () => {
@@ -13,7 +16,7 @@ const Calendar: FC = () => {
     const { authToken, user } = useSelector(
         (state: RootState) => state.auth
     );
-    const { personalSchedule } = useSelector(
+    const { personalSchedule, error, success } = useSelector(
         (state: RootState) => state.appointments
     );
 
@@ -52,7 +55,7 @@ const Calendar: FC = () => {
     useEffect(() => {
         if (personalSchedule) {
             setData(personalSchedule!)
-        }        
+        }
     }, [personalSchedule])
 
     const chooseTherapistModehandler = (e) => {
@@ -67,29 +70,44 @@ const Calendar: FC = () => {
         setUpdater(!updater)
     };
 
+    const dropModalHandler = (e) => {
+        e.preventDefault();
+        if (e.target === e.currentTarget) {
+            dispatch(setAppointmentSuccess(""))
+            dispatch(setAppointmentError(""))
+        }
+    }
+
     return (
         <div className={classes.Wrapper}>
-            {/* Makeit so that a dispatch is sent first thing and then gets all appointments for the current professional according to the auth token uid */}
-            {/* create a readonly scheduler and attach a drop-down like in other "Client" pages */}
+            <BackgroundEffect />
+            {error.length > 0 ?
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
+            {success.length > 0 ?
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
             <div className={classes.Calendar}>
                 <div className={classes.Header}>
                     <h2>Calendar</h2>
-                    {/* @ts-ignore */}
-                    {user.type == "Therapist" ?
-                        <div className={classes.Modes}>
-                            <div className={classes.Mode}>
-                                <DropDownListComponent id="ddlelement" change={chooseTherapistModehandler} value={mode} dataSource={modes} placeholder="Select mode" />
-                            </div>
+                    {user ?
+                        user.type == "Therapist" ?
+                            <div className={classes.Modes}>
+                                <div className={classes.Mode}>
+                                    <DropDownListComponent id="ddlelement" change={chooseTherapistModehandler} value={mode} dataSource={modes} placeholder="Select mode" />
+                                </div>
 
-                        </div>
-                        :
-                        <div className={classes.Modes}>
-                            <div className={classes.Mode}>
-                                <DropDownListComponent id="ddlelement" change={chooseRehabModehandler} value={rehabMode} dataSource={rehabModes} placeholder="Select mode" />
                             </div>
+                            :
+                            <div className={classes.Modes}>
+                                <div className={classes.Mode}>
+                                    <DropDownListComponent id="ddlelement" change={chooseRehabModehandler} value={rehabMode} dataSource={rehabModes} placeholder="Select mode" />
+                                </div>
 
-                        </div>
-                        }
+                            </div>
+                        : null}
                 </div>
                 <div className={classes.Content}>
                     <div className={classes.Scheduler}>

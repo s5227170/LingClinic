@@ -1,23 +1,23 @@
 import React, { FC, useEffect, useState } from "react";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import AppointmentItem from "../../components/interface/AppointmentItem/AppointmentItem";
 import { RootState } from "../../store";
-import { getallappointments, setAppointmentSuccess } from "../../store/actions/appointments";
+import { getallappointments, setAppointmentError, setAppointmentSuccess } from "../../store/actions/appointments";
 import { v4 as uuid } from "uuid";
 
 import classes from "./ClientAppointments.module.css";
 import AppointmentTherapistList from "../../components/interface/AppointmentTherapistList/AppointmentTherapistList";
 import BackgroundEffect from "../../components/HOC/BackroundEffect/BackgroundEffect";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+import ErrorModal from "../../components/interface/ErrorModal/ErrorModal";
+import SuccessModal from "../../components/interface/SuccessModal/SuccessModal";
 const ClientAppointments: FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { authToken } = useSelector(
         (state: RootState) => state.auth
     );
-    const { allAppointments } = useSelector(
+    const { allAppointments, error, success } = useSelector(
         (state: RootState) => state.appointments
     );
 
@@ -33,29 +33,45 @@ const ClientAppointments: FC = () => {
     }
 
     useEffect(() => {
-      if(mode) {
-          if(mode == "Healthcares") {
-            return navigate("/clientHealthcares");
-          }
-          if(mode == "Appointments") {
-            return navigate("/clientAppointments");
-          }
-          if(mode == "Calendar") {
-            return navigate("/Calendar");
-          }
-      }
+        if (mode) {
+            if (mode == "Healthcares") {
+                return navigate("/clientHealthcares");
+            }
+            if (mode == "Appointments") {
+                return navigate("/clientAppointments");
+            }
+            if (mode == "Calendar") {
+                return navigate("/Calendar");
+            }
+        }
     }, [mode])
-    
+
+    const dropModalHandler = (e) => {
+        e.preventDefault();
+        if (e.target === e.currentTarget) {
+            dispatch(setAppointmentSuccess(""))
+            dispatch(setAppointmentError(""))
+        }
+    }
+
 
     return (
         <div className={classes.Wrapper}>
             <BackgroundEffect />
+            {error.length > 0 ?
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
+            {success.length > 0 ?
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
+                :
+                null}
             <div className={classes.ClientAppointments}>
                 <div className={classes.Header}>
                     <h2>Client Appointments</h2>
                     <div className={classes.Modes}>
                         <div className={classes.Mode}>
-                        <DropDownListComponent id="ddlelement" change={chooseModehandler} value={mode} dataSource={modes} placeholder="Select mode" />
+                            <DropDownListComponent id="ddlelement" change={chooseModehandler} value={mode} dataSource={modes} placeholder="Select mode" />
                         </div>
                     </div>
                 </div>
@@ -68,9 +84,9 @@ const ClientAppointments: FC = () => {
                         </div> */}
                         <div className={classes.TableContent}>
                             <div className={classes.Pending}>
-                            <h5>Pending</h5>
-                                {allAppointments? 
-                                <AppointmentTherapistList
+                                <h5>Pending</h5>
+                                {allAppointments ?
+                                    <AppointmentTherapistList
                                         key={uuid()}
                                         mode="Pending"
                                         data={allAppointments}
@@ -80,7 +96,7 @@ const ClientAppointments: FC = () => {
                                     : null}
                             </div>
                             <div className={classes.Set}>
-                            <h5>Set</h5>
+                                <h5>Set</h5>
                                 {allAppointments ?
                                     <AppointmentTherapistList
                                         key={uuid()}

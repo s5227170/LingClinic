@@ -1,96 +1,105 @@
 .Wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #000;
-    padding: .4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+  padding: 0.4rem;
 }
 
 .Doc {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .NameAndIcon {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .Name {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .Name label {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0rem .2rem
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0rem 0.2rem;
+  font-size: 1vw;
 }
 
 .Information {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: .4rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.4rem 0rem;
 
-    animation-name: show;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
 }
 
 .Information label {
-    height: auto;
-    align-self: flex-end;
+  height: auto;
+  align-self: flex-end;
 }
 
 .Information label:hover {
-    cursor: pointer;
-    color: rgb(128, 128, 128);
-    transition: .4s;
+  cursor: pointer;
+  color: rgb(128, 128, 128);
+  transition: 0.4s;
 }
 
 .Information p {
-    margin: 0rem;
-    align-self: flex-start;
+  margin: 0rem;
+  align-self: flex-start;
 }
 
 .Doc i {
-    font-size: 1.6vw;
+  font-size: 1.6vw;
 }
 
 @keyframes show {
-    from {
-        max-height: 0;
-        transition: max-height 1s ease-out;
-        overflow: hidden;
-    }
+  from {
+    max-height: 0;
+    transition: max-height 1s ease-out;
+    overflow: hidden;
+  }
 
-    to {
-        max-height: 500px;
-        transition: max-height 1s ease-in;
-    }
+  to {
+    max-height: 500px;
+    transition: max-height 1s ease-in;
+  }
 }
 
 @media (max-width: 1100px) {
-    .NameAndIcon i {
-        font-size: 2vw;
-    }
+  .NameAndIcon i {
+    font-size: 2vw;
+  }
 }
 
 @media (max-width: 900px) {
-    .NameAndIcon i {
-        font-size: 3vw;
-    }
+  .NameAndIcon i {
+    font-size: 3vw;
+  }
+
+  .Name label {
+    font-size: 1.6vw;
+  }
 }
 
 @media (max-width: 600px) {
-    .NameAndIcon i {
-        font-size: 7vw;
-    }
+  .NameAndIcon i {
+    font-size: 7vw;
+  }
+
+  .Name label {
+    font-size: 3vw;
+  }
 }

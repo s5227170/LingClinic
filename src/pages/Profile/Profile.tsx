@@ -5,13 +5,15 @@ import avatar from '../../static/images/unknown.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import HealthcareAndAppointmentList from '../../components/interface/HealthcareAndAppointmentList/HealthcareAndAppointmentList';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getexistingprocedures, setAppointmentError, setAppointmentSuccess } from '../../store/actions/appointments';
 import { v4 as uuid } from "uuid";
 import BackgroundEffect from '../../components/HOC/BackroundEffect/BackgroundEffect';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { css } from "@emotion/react";
 import { PuffLoader } from 'react-spinners';
+import ErrorModal from '../../components/interface/ErrorModal/ErrorModal';
+import SuccessModal from '../../components/interface/SuccessModal/SuccessModal';
+import IconWithTooltip from '../../components/interface/IconWithTooltip/IconWithTooltip';
 
 const Profile: FC = () => {
     const navigate = useNavigate();
@@ -67,28 +69,12 @@ const Profile: FC = () => {
             <BackgroundEffect />
             {/*  @ts-ignore */}
             {error.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-error">
-                        <div className="Modal-header">
-                            <h4 className="Modal-error-header">Error</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{error}</h4>
-                    </div>
-                </div>
+                <ErrorModal message={error} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             {/*  @ts-ignore */}
             {success.length > 0 ?
-                <div key={uuid()} className="Backdrop" onClick={dropModalHandler}>
-                    <div className="Modal Modal-success">
-                        <div className="Modal-header">
-                            <h4 className="Modal-success-header">Success</h4>
-                            <i className="fa-regular fa-circle-xmark" onClick={dropModalHandler}></i>
-                        </div>
-                        <h4>{success == "success" ? "success" : "success"}</h4>
-                    </div>
-                </div>
+                <SuccessModal message={success} width={"40%"} height={"auto"} className={classes.CompletionModalWrapper} onClick={dropModalHandler} backdropOnClick={dropModalHandler} />
                 :
                 null}
             <div className={classes.Profile}>
@@ -98,19 +84,9 @@ const Profile: FC = () => {
                     </div>
                     <div className={classes.OptionsHeader}>
                         {/* add buttons here */}
-                        {['top'].map((placement) => (
-                            <OverlayTrigger
-                                key={placement}
-                                placement={"top"}
-                                overlay={
-                                    <Tooltip id={`tooltip-${placement}`}>
-                                        <strong>Book a therapist appointment</strong>
-                                    </Tooltip>
-                                }
-                            >
-                                <i onClick={bookHandler} id="bookAppointment" className="fa-regular fa-hospital"></i>
-                            </OverlayTrigger>
-                        ))}
+                        <IconWithTooltip position={"top"} clickHandler={bookHandler} tooltip={"Book an appointment"}>
+                            <i onClick={bookHandler} id="bookAppointment" className="fa-regular fa-hospital"></i>
+                        </IconWithTooltip>
                     </div>
                 </div>
                 <div className={classes.Content}>
