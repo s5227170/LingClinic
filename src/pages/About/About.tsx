@@ -43,7 +43,7 @@ const About: FC = () => {
                         style={{ border: 0 }}
                         loading="lazy"
                         allowFullScreen
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDr3ZOqKFZEMELNoaRq3rxVe-RR_oek8X4&zoom=14&q=Serdika II&center=42.6977,23.3219">
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyC5IlFqmXzh8_nvQJ60p6oTSsaoxFUxYn4&zoom=14&q=Serdika II&center=42.6977,23.3219">
                     </iframe>
                 </div>
                 <h1>Services</h1>
@@ -100,7 +100,7 @@ const About: FC = () => {
                     </div>
                     <ul>
                         <li>
-                            <u>Postisometric relaxation:</u>mainly used against pain relief, or for decrease muscle tone at body trigger points  
+                            <u>Postisometric relaxation:</u>mainly used against pain relief, or for decrease muscle tone at body trigger points
                         </li>
                         <li>
                             <u>Reciprocal inhibition:</u>it is utilised in intense cases of muscle issues, traumas, and as preparation for joint mobilization.
@@ -109,7 +109,7 @@ const About: FC = () => {
                 </div>
                 <div ref={s3} className={classes.Service}>
                     <h3>Treatment around disorders</h3>
-                <div className={classes.ServiceHeader}>
+                    <div className={classes.ServiceHeader}>
                         <h4>Education of rehabilitation and daily practices</h4>
                         <h6>we provide education of personal care and rehabilitation practices to caregivers such as:</h6>
                     </div>
@@ -133,7 +133,7 @@ const About: FC = () => {
                     </div>
                     <ul>
                         <li>
-                            <u>Methodology of Bobath:</u>aims at achieving functional independence through assistance using similar to everyday movements 
+                            <u>Methodology of Bobath:</u>aims at achieving functional independence through assistance using similar to everyday movements
                         </li>
                         <li>
                             <u>Methodology of Vojta:</u>meant to assist in the elimination of different complications of any kind

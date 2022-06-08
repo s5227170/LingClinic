@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Menu from './components/HOC/Menu/Menu';
 import Footer from './components/HOC/Footer/Footer';
@@ -27,12 +27,11 @@ import AppointmentRehabilitator from './pages/AppointmentRehabilitator/Appointme
 import Calendar from './pages/Calendar/Calendar';
 import ClientHealthcares from './pages/ClientHealthcares/ClientHealthcares';
 import TherapistHealthcareView from './pages/TherapisthealthcareView/TherapistHealthcareView';
+import PageLoader from './components/interface/PageLoader/PageLoader';
 
 function App() {
   const dispatch = useDispatch();
-  const { authenticated } = useSelector((state: RootState) => state.auth);
-  const { userType } = useSelector((state: RootState) => state.auth);
-  const { loading } = useSelector((state: RootState) => state.auth);
+  const { authenticated, userType, loading, authComplete } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     const authenticator = auth;
@@ -49,13 +48,7 @@ function App() {
   }, [dispatch]);
 
   if (loading) {
-    return <div className='LoaderScreen'>
-      <Watch ariaLabel='Loading...'
-        color="#fff"
-        height={300}
-        width={300} />;
-      <h1 style={{ "color": "#fff" }}>Loading...</h1>
-    </div>
+    return <PageLoader />
   }
 
   return (
@@ -67,16 +60,16 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/about/:service" element={<About />} />
           <Route path="/authenticate" element={!authenticated ? <Authenticate /> : <Navigate to="/" />} />
-          <Route path="/healthcare" element={authenticated ? <HealthcareView /> : <Navigate to="/authenticate" />} />
-          <Route path="/profile" element={authenticated ? <Profile /> : <Navigate to="/authenticate" />} />
-          <Route path="/appointmentTherapist" element={authenticated ? <AppointmentTherapist /> : <Navigate to="/authenticate" />} />
-          <Route path="/appointmentRehabilitator/:id" element={authenticated ? <AppointmentRehabilitator /> : <Navigate to="/authenticate" />} />
-          <Route path="/healthcareView/:id" element={authenticated ? <HealthcareView /> : <Navigate to="/authenticate" />} />
-          <Route path="/healthcareCreate/:id" element={authenticated ? <HealthcareCreate /> : <Navigate to="/authenticate" />} />
-          <Route path="/therapistHealthcareView/:id" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <TherapistHealthcareView /> : <Navigate to="/authenticate" />} />
-          <Route path="/clientAppointments" element={authenticated && (userType == "Therapist") ? <ClientAppointments /> : <Navigate to="/authenticate" />} />
-          <Route path="/clientHealthcares" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <ClientHealthcares /> : <Navigate to="/authenticate" />} />
-          <Route path="/calendar" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <Calendar /> : <Navigate to="/authenticate" />} />
+          <Route path="/healthcare" element={authenticated ? <HealthcareView /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/profile" element={authenticated ? <Profile /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/appointmentTherapist" element={authenticated ? <AppointmentTherapist /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/appointmentRehabilitator/:id" element={authenticated ? <AppointmentRehabilitator /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/healthcareView/:id" element={authenticated ? <HealthcareView /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/healthcareCreate/:id" element={authenticated ? <HealthcareCreate /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/therapistHealthcareView/:id" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <TherapistHealthcareView /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/clientAppointments" element={authenticated && (userType == "Therapist") ? <ClientAppointments /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/clientHealthcares" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <ClientHealthcares /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
+          <Route path="/calendar" element={authenticated && (userType == "Therapist" || userType == "Rehabilitator") ? <Calendar /> : authComplete ? <Navigate to="/authenticate" /> : PageLoader} />
           <Route path="*" element={<div id="errorPage">
             <h1>No such page</h1>
           </div>} />
