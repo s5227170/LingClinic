@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+<h1>Context</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React-based application for a clinic management web service. It's meant to provide a way for clients of a potential clinic to book appointments and manage their healthcare. Currently, it is under development. However, Some basic functionalities have already been completed. Many features will change and improve. The author of the project is utilising this client-side part of the whole software to showcase their front-end abilities and skill. Since focus was on functionality, UI and UX have beeen ignored. Near-future updates will include UI and UX enhancements. The application has been developed in a period of around 1-2 months(together with the server-side).
 
-## Available Scripts
+## Installation Guide
+To install the client-side software locally:
+- Download the newest version of Node.js and install it
+- Extract the zip file
+- Open the FYP-final folder with Visual Studio Code
+- Open the VSC terminal through View → Terminal
+- Type npm install to install all dependencies
+- After package installation, VSC may still show imports as errors, in case of this, just restart 
+VSC to refresh it
+- Create a file index.ts in the firebase folder (Figure A1)
+- Go to Firebase and copy the firebase config details, then paste them in the firebase folder 
+in index.ts (Figure A2)
+- Generate a Google Maps Embed API key (Figure A3)
+- Add a Google Maps Embed API key in src\pages\About\About.tsx in the iframe key=<API key>& (Figure A4) 
+<br/>
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="center">
+<img width="660" height="300" src="https://user-images.githubusercontent.com/56725628/172591714-a8aa5a01-fe5a-4c8b-a91d-bcdd95b701f8.png">
+<h4 align="center">Figure 1: Visualisation of how the file should look</h4>
+</p>
+<hr>
+<p align="center">
+<img width="660" height="300" src="https://user-images.githubusercontent.com/56725628/172599647-d389c3f5-7d48-4bb4-a520-4214a898bccd.PNG">
+<h4 align="center">Figure 2: The config details could be found in firebase project settings</h4>
+</p>
+<hr>
+<p align="center">
+<img width="660" height="300" src="https://user-images.githubusercontent.com/56725628/172599851-be3d379d-5383-4a07-af74-27ee49700a90.PNG">
+<h4 align="center">Figure 3: Generation of a Google Maps Embed API key</h4>
+</p>
+<hr>
+<p align="center">
+<img width="800" height="200" src="https://user-images.githubusercontent.com/56725628/172600033-2ca198ea-4f92-4d78-9639-b8ec6ee8559c.PNG">
+<h4 align="center">Figure 4: Location and target for the Google Maps Embed API key</h4>
+</p>
