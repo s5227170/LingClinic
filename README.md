@@ -1,6 +1,9 @@
 <h1>Context</h1>
 
-React-based application for a clinic management web service. It's meant to provide a way for clients of a potential clinic to book appointments and manage their healthcare. Currently, it is under development. However, Some basic functionalities have already been completed. Many features will change and improve. The author of the project is utilising this client-side part of the whole software to showcase their front-end abilities and skill. Since focus was on functionality, UI and UX have beeen ignored. Near-future updates will include UI and UX enhancements. The application has been developed in a period of around 1-2 months(together with the server-side).
+React-based application for a clinic management web service. It's meant to provide a way for clients of a potential clinic to book appointments and manage their healthcare. Currently, it is under development. However, Some basic functionalities have been completed. Many features will change and improve. The author of the project is utilising this client-side part of the whole software to showcase their front-end abilities and skill. Since focus was on functionality, UI and UX have beeen ignored. Near-future updates will include UI and UX enhancements. The application has been developed in a period of around 1-2 months(together with the server-side).
+
+The server meant to handle the back-end logic for the software is based on Google Cloud Functions and is created utilising node.js/express.js. The Github repository could be found here: 
+https://github.com/s5227170/LingClinic-CF
 
 ## Installation Guide
 To install the client-side software locally:
