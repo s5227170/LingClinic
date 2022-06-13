@@ -1,231 +1,215 @@
 .Wrapper {
-    width: 80%;
+  width: 80%;
   margin-left: 20%;
-    min-height: 100vh;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 5rem;
-    padding-top: 3rem;
-    font-family: 'Roboto', sans-serif;
-    animation-name: show;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    position: relative;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5rem;
+  padding-top: 3rem;
+  font-family: "Roboto", sans-serif;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  position: relative;
 }
 
 .ClientHealthcares {
-    width: 80%;
-    min-height: 30rem;
-    border: 2px solid rgb(131, 131, 131);
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
-    box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
-    background-color: rgba(43, 43, 43, 0.9);
-    color: #fff;
-    padding: .5rem;
+  width: 80%;
+  min-height: 30rem;
+  border: 2px solid rgb(131, 131, 131);
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 10px 13px 0px rgba(0, 0, 0, 0.42);
+  background-color: rgba(43, 43, 43, 0.9);
+  color: #fff;
+  padding: 0.5rem;
 }
 
 .Header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .Header i {
-    font-size: 30px;
-    padding: .5rem .5rem 0rem 0rem;
+  font-size: 30px;
+  padding: 0.5rem 0.5rem 0rem 0rem;
 }
 
 .Header i:hover {
-    transform: scale(1.05);
-    filter: brightness(70%);
-    cursor: pointer;
-    transition: .2s;
+  transform: scale(1.05);
+  filter: brightness(70%);
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .Modes {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .Mode {
-    margin: auto;
-    width: 14rem;
-    height: 2rem;
+  margin: auto;
+  width: 14rem;
+  height: 2rem;
 }
 
 .Content {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 4px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 4px;
 }
 
 .Content table {
-    border: 2px solid #000;
-    border-radius: 4px;
+  border: 2px solid #000;
+  border-radius: 4px;
 }
 
 .Content th {
-    padding: .2rem;
+  padding: 0.2rem;
 }
 
 .ClientCell {
-    width: 10rem;
+  width: 10rem;
 }
 
 .Content tbody tr:nth-child(odd) {
-    background-color: #F2F2F2;
-    filter: brightness(90%);
+  background-color: #f2f2f2;
+  filter: brightness(90%);
 }
 
 .DiagnosisCell {
-   
 }
 
 .RehabilitatorAppointmentCell {
-    width: 4rem;
+  width: 4rem;
 }
 
 .RehabilitatorCell {
-
 }
 
 .TherapistCell {
-
 }
 
 .InitialisedCell {
-
 }
 
 .ViewCell {
 }
 
-
-
 .Content table tbody:nth-child(odd) {
-    background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .Content table tbody:nth-child(even) {
-    background-color: #fff;
+  background-color: #fff;
 }
 
-.Content th{
-    border: 2px solid #000;
-    text-align: center;
-    color: #000;
-    font-weight: 200;
-    background-color: #fff;
+.Content th {
+  border: 2px solid #000;
+  text-align: center;
+  color: #000;
+  font-weight: 200;
+  background-color: #fff;
 }
 
 @keyframes show {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1300px) {
-    .Wrapper {
-        margin-left: 24%;
-        padding-bottom: 10rem;
-        padding-top: 5rem;
-    }
+  .Wrapper {
+    margin: 0rem;
+    margin-left: 30%;
+    width: 70%;
+    padding-bottom: 10rem;
+    padding-top: 5rem;
+  }
+
+  .ClientHealthcares {
+    width: 90%;
+  }
 }
 @media (max-width: 1200px) {
-    .Wrapper {
-        margin-left: 24%;
-        padding-bottom: 10rem;
-        padding-top: 5rem;
-    }
-
-    .Content {
-        padding: .1rem;
-        padding-top: 1rem;
-    }
+  .Content {
+    padding: 0.1rem;
+    padding-top: 1rem;
+  }
 }
 
 @media (max-width: 1000px) {
-    .Wrapper {
-        width: 84%;
-        margin-left: 24%;
-    }
+  .Content {
+    padding: 0.1rem;
+    padding-top: 1rem;
+  }
 
-    .Content {
-        padding: .1rem;
-        padding-top: 1rem;
-    }
-
-    .Content table {
-        width: 100%;
-    }
+  .Content table {
+    width: 100%;
+  }
 }
 
 @media (max-width: 950px) {
-    .Wrapper {
-        width: 86%;
-        margin-left: 22%;
-    }
 }
 
 @media (max-width: 900px) {
-    .Wrapper {
-        width: 100%;
-        margin: auto;
-    }
+  .Wrapper {
+    width: 100%;
+    margin: auto;
+  }
 
-    .Content table {
-        width: 100%;
-    }
+  .Content table {
+    width: 100%;
+  }
 }
 
 @media (max-width: 750px) {
-    .Wrapper {
-        height: auto;
-        width: 100%;
-    }
+  .Wrapper {
+    height: auto;
+    width: 100%;
+  }
 
-    .Header {
-        display: flex;
-        flex-direction: column;
-    }
+  .Header {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .Header h2 {
-        text-align: center;
-    }
+  .Header h2 {
+    text-align: center;
+  }
 
-    .Modes {
-        margin: 1rem 0rem 2rem 0rem;
-    }
+  .Modes {
+    margin: 1rem 0rem 2rem 0rem;
+  }
 
-    .ClientHealthcares {
-        width: 100%;
-        margin-bottom: 20rem;
-        padding: 0rem;
-    }
+  .ClientHealthcares {
+    width: 100%;
+    margin-bottom: 20rem;
+    padding: 0rem;
+  }
 
-    .Content {
-        overflow-x: auto;
-        padding: 0rem;
-    }
+  .Content {
+    overflow-x: auto;
+    padding: 0rem;
+  }
 
-    .Content label {
-        text-align: center;
-    }
-
+  .Content label {
+    text-align: center;
+  }
 }

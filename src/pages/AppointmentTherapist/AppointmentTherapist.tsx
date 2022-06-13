@@ -185,8 +185,10 @@ const AppointmentTherapist: FC = () => {
                                 <i onClick={returnHandler} className="fa-regular fa-circle-left"></i>
                             </IconWithTooltip>
                         </div>
-                        <div className={classes.DropDownWrapper}>
+                        <div className={classes.Instructions}>
                             <label>Please choose a therapist in order to see available bookings</label>
+                        </div>
+                        <div className={classes.DropDownWrapper}>
                             <DropDownListComponent id="ddlelement" change={therapistHandler} value={therapist} dataSource={professionals} placeholder="Select a therapist" />
                         </div>
                         <div className={classes.Scheduler}>

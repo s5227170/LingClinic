@@ -27,6 +27,7 @@ export const SET_LIST_HEALTHCARES = "SET_LIST_HEALTHCARES";
 
 export interface AuthState {
   user: User | null;
+  userAvatar: string;
   authenticated: boolean;
   loading: boolean;
   error: string;
@@ -65,6 +66,7 @@ interface setUser {
   payload2: boolean;
   payload3: string;
   payload4: any | null;
+  payload5: string;
 }
 
 interface setLoading {
@@ -189,15 +191,15 @@ export type HealthcareAction =
   | setHealthcareList;
 
 export interface User {
-  id: string;
+  _id: string;
   email: string;
   forename: string;
   surname: string;
   type: string;
   avatar: string;
-  mobile: number;
-  healthcare: Healthcare[];
-  appointments: AppointmentT[];
+  // mobile: number;
+  // healthcare: Healthcare[];
+  // appointments: AppointmentT[];
 }
 
 export interface Rehab {

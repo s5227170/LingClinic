@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { Docs, RehabilitatorAppointment } from "../store/types";
+import { Docs, RehabilitatorAppointment, User } from "../store/types";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
@@ -64,6 +64,12 @@ const user = {
       { uid, email, forename, surname },
       token
     ),
+  update: (user: User, token: string) =>
+    requests.post(
+      axios.defaults.baseURL + userEndPoint + "updateuser",
+      { user },
+      token
+    ),
 };
 
 //Setting the cloud function end-point name
@@ -104,6 +110,18 @@ const files = {
     requests.getFile(
       axios.defaults.baseURL + fileEndPoint + "downloadFile",
       { mode, docNames },
+      token
+    ),
+  downloadAvatar: (avatar: string, token: string) =>
+    requests.getFile(
+      axios.defaults.baseURL + fileEndPoint + "downloadAvatar",
+      { avatar },
+      token
+    ),
+  uploadAvatar: (token: string, avatar: FormData) =>
+    requests.postFile(
+      axios.defaults.baseURL + fileEndPoint + "uploadAvatar",
+      avatar,
       token
     ),
 };

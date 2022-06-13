@@ -118,14 +118,12 @@ const HealthcareView: FC = () => {
     }, [healthcare])
 
     const dataHandler = (e) => {
-        console.log(e)
         if (e.data.id != healthcare?.appointmentTherapist._id) {
             e.element.style.backgroundColor = "#6AB05E";
             e.data.Subject = "Therapist"
         }
         setUpdatedData((data) => [...data, e.data]);
     };
-    console.log(data)
 
     const rehabAppointmentHandler = () => {
         if (healthcare?.appointmentsRehabRequired == healthcare?.appointmentsRehabilitator.length) {

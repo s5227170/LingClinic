@@ -11,6 +11,7 @@ import {
 
 const initialState: AuthState = {
   user: null,
+  userAvatar: "",
   authenticated: false,
   loading: false,
   error: "",
@@ -31,6 +32,7 @@ export default (state = initialState, action: AuthAction) => {
         userType: action.payload3,
         loading: false,
         authToken: action.payload4,
+        userAvatar: action.payload5,
       };
     case SIGN_OUT:
       return {

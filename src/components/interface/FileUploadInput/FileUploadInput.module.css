@@ -1,0 +1,42 @@
+.Wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* The Function Button */
+.FunctionButton {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+}
+
+/* The Style Button */
+.StyleButton {
+  width: 100%;
+  height: max-content;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  z-index: 1;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #000;
+  color: rgb(66, 66, 66);
+  font-weight: 400;
+  font-size: 1.4vw;
+  -webkit-box-shadow: 0px 6px 28px -10px #000000;
+  box-shadow: 0px 6px 28px -10px #000000;
+}
+
+.StyleButton:hover {
+  filter: brightness(70%);
+  transition: 0.2s;
+}
+
+.StyleButton:active {
+  filter: brightness(100%);
+}

@@ -19,7 +19,7 @@ const Profile: FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { user, authenticated, authToken } = useSelector((state: RootState) => state.auth);
+    const { user, userAvatar, authenticated, authToken } = useSelector((state: RootState) => state.auth);
     const { existingProcedures, success, error, loading } = useSelector((state: RootState) => state.appointments);
 
     const [dataList, setDataList] = useState(false);
@@ -55,6 +55,15 @@ const Profile: FC = () => {
         return navigate("/authenticate")
     }
 
+    const editProfileHandler = () => {
+        if (authenticated) {
+            console.log("relocate to booking");
+            return navigate("/profileEdit")
+        }
+        console.log("relocate to authenticate");
+        return navigate("/authenticate")
+    }
+
 
     const dropModalHandler = (e) => {
         e.preventDefault();
@@ -84,9 +93,22 @@ const Profile: FC = () => {
                     </div>
                     <div className={classes.OptionsHeader}>
                         {/* add buttons here */}
-                        <IconWithTooltip position={"top"} clickHandler={bookHandler} tooltip={"Book an appointment"}>
-                            <i onClick={bookHandler} id="bookAppointment" className="fa-regular fa-hospital"></i>
-                        </IconWithTooltip>
+                        <div className={classes.Book}>
+                            <IconWithTooltip position={"top"} clickHandler={bookHandler} tooltip={"Book an appointment"}>
+                                <Fragment>
+                                    <i onClick={bookHandler} className="fa-regular fa-calendar-plus"></i>
+                                    <p onClick={bookHandler}>Book</p>
+                                </Fragment>
+                            </IconWithTooltip>
+                        </div>
+                        <div className={classes.Book}>
+                            <IconWithTooltip position={"top"} clickHandler={editProfileHandler} tooltip={"Book an appointment"}>
+                                <Fragment>
+                                    <i onClick={editProfileHandler} className="fa-regular fa-calendar-plus"></i>
+                                    <p onClick={editProfileHandler}>Edit Profile</p>
+                                </Fragment>
+                            </IconWithTooltip>
+                        </div>
                     </div>
                 </div>
                 <div className={classes.Content}>
@@ -104,7 +126,7 @@ const Profile: FC = () => {
                     </div>
                     <div className={classes.UserInfo}>
                         <div className={classes.AvatarWrapper}>
-                            <img src={avatar} />
+                            <img src={userAvatar ? userAvatar.length > 0 ? userAvatar : avatar : avatar} />
                         </div>
                         <div className={classes.Details}>
                             <hr></hr>

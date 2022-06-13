@@ -4,6 +4,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  updatePassword,
 } from "firebase/auth";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
@@ -16,9 +17,11 @@ import {
   SET_SUCCESS,
   SET_USER,
   SIGN_OUT,
+  User,
 } from "../types";
 import agent from "../../api/agent";
 import { auth } from "../../firebase";
+import { async } from "@firebase/util";
 
 export const register = (
   email: string,
@@ -47,6 +50,7 @@ export const register = (
               payload2: true,
               payload3: createdUser.type,
               payload4: token,
+              payload5: "",
             });
           }
         }
@@ -92,13 +96,18 @@ export const getuserbyid = (
       const token = await user.getIdToken(true);
       const getUser = await agent.user.details(token);
 
+      let avatar: string = "";
       if (getUser) {
+        if (getUser.avatar.length != 0) {
+          avatar = await agent.files.downloadAvatar(getUser.avatar, token);
+        }
         dispatch({
           type: SET_USER,
           payload1: getUser,
           payload2: true,
           payload3: getUser.type,
           payload4: token,
+          payload5: avatar,
         });
       }
       dispatch(setLoading(false));
@@ -107,6 +116,67 @@ export const getuserbyid = (
       console.log((err as any).message);
       dispatch(setError((err as any).message));
     }
+  };
+};
+
+export const updateuser = (
+  user: User,
+  token: string,
+  avatar?: File
+): ThunkAction<void, RootState, null, AuthAction> => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    console.log(avatar);
+
+    const formData = new FormData();
+    if (avatar) {
+      formData.append("file", avatar);
+
+      const uploadAvatar = await agent.files.uploadAvatar(token, formData);
+      user.avatar = uploadAvatar;
+
+      const updatedUser = await agent.user.update(user, token).catch((err) => {
+        dispatch(setError(err.message));
+        dispatch(setLoading(false));
+      });
+      if (updatedUser) {
+        const authenticator = auth;
+        dispatch(getuserbyid(authenticator.currentUser));
+        dispatch(setSuccess("Update successfull!"));
+        dispatch(setLoading(false));
+      }
+    } else {
+      const updatedUser = await agent.user.update(user, token).catch((err) => {
+        dispatch(setError(err.message));
+        dispatch(setLoading(false));
+      });
+      if (updatedUser) {
+        const authenticator = auth;
+        dispatch(getuserbyid(authenticator.currentUser));
+        dispatch(setSuccess("Update successfull!"));
+        dispatch(setLoading(false));
+      }
+    }
+
+    dispatch(setLoading(false));
+  };
+};
+
+export const updateuserpassword = (
+  password: string
+): ThunkAction<void, RootState, null, AuthAction> => {
+  return async (dispatch) => {
+    console.log(password);
+    const authenticator = auth;
+    dispatch(setLoading(true));
+    const user = authenticator.currentUser;
+    if (user) {
+      await updatePassword(user, password).catch((err) => {
+        setError(err);
+      });
+    }
+    dispatch(setSuccess("Password successfully changed."));
+    dispatch(setLoading(false));
   };
 };
 

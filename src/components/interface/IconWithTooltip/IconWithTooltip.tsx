@@ -1,6 +1,7 @@
 import React, { FC, HTMLAttributes, JSXElementConstructor, ReactElement, ReactNode } from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { OverlayTriggerRenderProps } from 'react-bootstrap/esm/OverlayTrigger';
+import classes from './IconWithTooltip.module.css';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
     children: ReactElement<any, string | JSXElementConstructor<any>> | ((props: OverlayTriggerRenderProps) => ReactNode)
@@ -12,7 +13,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const IconWithTooltip: FC<Props> = (props) => {
 
     return (
-        <div>
+        <div className={classes.Wrapper}>
             {[props.position].map((placement) => {
                 return (
                     <OverlayTrigger
@@ -22,7 +23,9 @@ const IconWithTooltip: FC<Props> = (props) => {
                             <strong>{props.tooltip}</strong>
                         </Tooltip>}
                     >
-                        {props.children}
+                        <div>
+                            {props.children}
+                        </div>
                     </OverlayTrigger>
                 );
             })}
